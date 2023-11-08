@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .bubble {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: lightblue;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      margin: 5px;
+      font-size: 16px;
+      user-select: none;
+    }
+
+    #container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+  <title>Bubble Clicker</title>
+</head>
+<body>
+  <div id="container"></div>
+  <button onclick="resetBubbles()">Reset</button>
+
+  <script>
+    // Function to create bubbles with numbers
+    function createBubbles() {
+      const container = document.getElementById('container');
+
+      for (let i = 1; i <= 60; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        bubble.innerText = i;
+        bubble.onclick = function () {
+          this.style.display = 'none';
+        };
+
+        container.appendChild(bubble);
+      }
+    }
+
+    // Function to reset bubbles
+    function resetBubbles() {
+      const bubbles = document.querySelectorAll('.bubble');
+
+      bubbles.forEach(bubble => {
+        bubble.style.display = 'flex';
+      });
+    }
+
+    // Initialize bubbles on page load
+    createBubbles();
+  </script>
+</body>
+</html>
